@@ -3,7 +3,6 @@ import "./globals.css";
 
 import { NavBar, Footer } from "@/components";
 
-
 export const metadata: Metadata = {
   title: "Car Hub",
   description: "Discover the best cars in the World",
@@ -16,10 +15,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className=" relative antialiased"
-      >
-       <NavBar />
+      <body className=" relative">
+        <NavBar />
         {children}
         <Footer />
       </body>
