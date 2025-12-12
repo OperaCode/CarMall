@@ -16,8 +16,8 @@ const Footer = () => {
             className="object-contain"
           />
           <p className="text-base text-gray-700">
-            Car Hub 2025 <br/>
-            All rights reseerved &copy;
+            Car Hub 2025 <br />
+            All rights reserved &copy;
           </p>
         </div>
 
@@ -25,14 +25,29 @@ const Footer = () => {
           {footerLinks.map((link) => (
             <div key={link.title} className="footer__link">
               <h3 className="font-bold">{link.title}</h3>
-                {link.links.map(()=>(
-                    <div>
-                        
-                    </div>
-                   
-                ))}
+              {link.links.map((items) => (
+                <Link
+                  key={items.title}
+                  href={items.url}
+                  className="text-gray-500"
+                >
+                  {items.title}
+                </Link>
+              ))}
             </div>
           ))}
+        </div>
+      </div>
+      <div className="flex justify-between items-center flex-wrap mt-10 border-t border-gray-100 sm:px-16 px-6 py-10">
+        <p>@2025 CarHub. All Rights Reserved</p>
+
+        <div className="footer__copyrights-link">
+          <Link href="/" className="text-gray-500">
+            Privacy Policy
+          </Link>
+          <Link href="/" className="text-gray-500">
+            Terms of Use
+          </Link>
         </div>
       </div>
     </footer>
