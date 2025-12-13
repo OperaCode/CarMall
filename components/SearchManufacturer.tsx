@@ -20,13 +20,19 @@ const SearchManufacturer = ({
   // states
   const [query, setQuery] = useState("");
 
-  const filteredManufactureres = query === "" ? manufacturers : manufacturers.filter((item)=>(
-    item.toLocaleLowerCase().replace(/\s+/g,"").includes(query.toLowerCase().replace(/\s+/g, ""))
-  ))
+  const filteredManufacturers =
+    query === ""
+      ? manufacturers
+      : manufacturers.filter((item) =>
+          item
+            .toLowerCase()
+            .replace(/\s+/g, "")
+            .includes(query.toLowerCase().replace(/\s+/g, ""))
+        );
 
   return (
     <div className="search-manufacturer">
-      <Combobox>
+      <Combobox value={manufacturer}>
         <div className="relative w-full">
           <ComboboxButton className="absolute top-[14px]">
             <Image
@@ -53,18 +59,22 @@ const SearchManufacturer = ({
             afterLeave={() => setQuery("")}
           >
             <ComboboxOptions>
-                
+              {filteredManufacturers.map((item) => (
+                <ComboboxOption
+                  key={item}
+                  className={({ active }) =>
+                    `
+                  relative search-manufacturer__option ${
+                    active ? `bg-primary-blue text-white` : `text-gray-900`
+                  }`
+                  }
+                  value={item}
+                >
+                 
+                </ComboboxOption>
+              ))}
             </ComboboxOptions>
           </Transition>
-
-
-
-        
-
-
-
-
-
         </div>
       </Combobox>
     </div>
